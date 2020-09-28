@@ -1,17 +1,19 @@
 import React,{useState} from 'react';
 
+import AddNewTodo from './AddNewTodo';
+
 const TodoList = () => {
   const [todos, setTodos] = useState([
     {text: 'Pay bills', id: 1},
     {text: 'Study react', id: 2},
     {text: 'Feed the Dog', id: 3}
-  ])
+  ], [''])
 
-  const addTodo = () => {
+  const addTodo = (text) => {
     setTodos([
       ...todos,
       {
-        text: 'Learn Hooks',
+        text,
         id: Math.random() //or can use UUID
       }
     ])
@@ -26,7 +28,7 @@ const TodoList = () => {
           )
         })}
       </ul>
-      <button onClick={addTodo}>Add Todo</button>
+      <AddNewTodo  addTodo={addTodo}/>
     </div>
   )
 }
